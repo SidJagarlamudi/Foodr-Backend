@@ -12,7 +12,7 @@ class Api::V1::AuthController < ApplicationController
 
   def show
     if logged_in
-      render json: {email: current_log.email, id: current_log.id}, status: 200
+      render json: {email: current_log.email, id: current_log.id, favorites: current_log.businesses}, status: 200
     else
       render json: {error: 'Token Invalid'}, status: 401
     end

@@ -9,12 +9,17 @@ class FavoritesController < ApplicationController
   # end
 
   def create
-    @favorite = Favorite.create(favorite_params)
-    byebug
-    if @favorite
-      render json: @favorite
+    if logged_in
+      business = Business.find(params[:business_id])
+      user = current_log
+      @favorite = Favorite.create(business: business, user: user)
+      if @favorite
+        render json: {id: business[:id], name: business[:name]}
+      else
+        render json: { errors: @favorite.errors.full_messages }
+      end
     else
-      render json: { errors: @favorite.errors.full_messages }
+      render json: { errors: "User not logged in" }
     end
   end
 
@@ -27,8 +32,8 @@ class FavoritesController < ApplicationController
 
   private
 
-  def favorite_params
-    params.require(:favorite).permit(:user_id, :restaurant_id)
-  end
+  # def favorite_params
+  #   params.require(:favorite).permit(:user_id, :business_id)
+  # end
 
 end
