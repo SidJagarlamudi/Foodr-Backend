@@ -8,6 +8,7 @@
 
 User.destroy_all
 Business.destroy_all
+Favorite.destroy_all
 
 
 tom = User.create(email: "tom@gmail.com", password: "1234")
@@ -60,3 +61,5 @@ def business(business_id)
   response = HTTP.auth("Bearer #{API_KEY}").get(url)
   response.parse
 end
+
+Favorite.create(user: tom, business: Business.find(1))
