@@ -24,7 +24,8 @@ class Search < ApplicationRecord
     params = {
       term: term,
       location: location,
-      limit: SEARCH_LIMIT
+      limit: SEARCH_LIMIT,
+      categories: "Food"
     }
 
     response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
