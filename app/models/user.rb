@@ -3,5 +3,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_many :favorites
   has_many :businesses, through: :favorites
+  has_many :searches
+  has_many :businesses, through: :searches, as: :results
 
 end

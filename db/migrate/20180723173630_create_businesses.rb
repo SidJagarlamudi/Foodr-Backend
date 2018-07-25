@@ -14,6 +14,7 @@ class CreateBusinesses < ActiveRecord::Migration[5.2]
       t.string :phone
       t.float :latitude
       t.float :longitude
+      t.integer :search_id
 
       t.timestamps
     end

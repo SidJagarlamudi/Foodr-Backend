@@ -36,6 +36,7 @@ gem 'pry'
 
 gem 'json'
 gem 'http'
+gem 'faraday'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
