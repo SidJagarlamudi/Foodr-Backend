@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   def favorites
     arr =
     self.object.businesses.map do |rest|
-      {id: rest.id, name: rest.name}
+      {id: rest.id, name: rest.name, lat: rest.latitude, long: rest.longitude}
     end
   end
 end
