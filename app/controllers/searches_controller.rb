@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
       user = current_log
       @search = Search.create(term: params[:term], user: user)
       if @search
-        # results = @search.search(params[:term])
+        results = @search.search(params[:term])
         render json: @search.businesses
       else
         render json: { errors: @search.errors.full_messages }
