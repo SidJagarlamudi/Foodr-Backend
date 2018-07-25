@@ -2,8 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :email, uniqueness: true
   has_many :favorites
-  has_many :businesses, through: :favorites
   has_many :searches
-  has_many :businesses, through: :searches, as: :results
+  has_many :spots, through: :favorites
+  has_many :businesses, through: :searches
 
 end

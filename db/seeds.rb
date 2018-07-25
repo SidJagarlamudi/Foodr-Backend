@@ -20,17 +20,10 @@ search1 = Search.create(term: "sushi", user: tom)
 
 result = search1.search("sushi")
 
-result.each do |bus|
-    do_delivery = bus["transactions"].include?("delivery")
-    address = bus["location"]["display_address"].join(", ")
-    coordinates = bus["coordinates"]
-    Business.create(business_id: bus["id"], name: bus["name"], image_url: bus["image_url"], is_closed: bus["is_closed"], url: bus["url"], reviews: bus["review_count"], rating: bus["rating"], do_delivery: do_delivery, price: bus["price"], address: address, phone: bus["display_phone"], latitude: bus["coordinates"]["latitude"], longitude: bus["coordinates"]["longitude"])
-end
-
 binding.pry
 "hi"
 
-# Favorite.create(user: tom, business: Business.find(1))
+Favorite.create(user: tom, spot: Business.find(1))
 
 
 # require "json"

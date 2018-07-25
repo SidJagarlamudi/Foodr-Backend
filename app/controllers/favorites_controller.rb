@@ -10,11 +10,11 @@ class FavoritesController < ApplicationController
 
   def create
     if logged_in
-      business = Business.find(params[:business_id])
+      spot = Business.find(params[:business_id])
       user = current_log
-      @favorite = Favorite.create(business: business, user: user)
+      @favorite = Favorite.create(spot: spot, user: user)
       if @favorite
-        render json: {id: business[:id], name: business[:name]}
+        render json: {id: spot[:id], name: spot[:name]}
       else
         render json: { errors: @favorite.errors.full_messages }
       end
