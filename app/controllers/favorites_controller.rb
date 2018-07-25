@@ -13,8 +13,9 @@ class FavoritesController < ApplicationController
       spot = Business.find(params[:business_id])
       user = current_log
       @favorite = Favorite.create(spot: spot, user: user)
+      # byebug
       if @favorite
-        render json: {id: spot[:id], name: spot[:name]}
+        render json: user.spots
       else
         render json: { errors: @favorite.errors.full_messages }
       end
