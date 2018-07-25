@@ -12,7 +12,7 @@ API_KEY = ENV["YELP_API_KEY"]
 # DEFAULT_BUSINESS_ID = "yelp-san-francisco"
 DEFAULT_TERM = "dinner"
 DEFAULT_LOCATION = "New York, NY"
-SEARCH_LIMIT = 10
+SEARCH_LIMIT = 15
 
 
 class Search < ApplicationRecord
