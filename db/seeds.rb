@@ -9,6 +9,7 @@
 require "pry"
 
 User.destroy_all
+Search.destroy_all
 Business.destroy_all
 Favorite.destroy_all
 
