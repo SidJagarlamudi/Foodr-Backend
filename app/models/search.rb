@@ -19,14 +19,26 @@ class Search < ApplicationRecord
   has_many :businesses
   belongs_to :user
 
-  def search(term=DEFAULT_TERM, location=DEFAULT_LOCATION)
-    url = "#{API_HOST}#{SEARCH_PATH}"
-    params = {
-      term: term,
-      location: location,
-      limit: SEARCH_LIMIT,
-      categories: "Food"
-    }
+  # def search(term=DEFAULT_TERM, location=DEFAULT_LOCATION)
+  #   url = "#{API_HOST}#{SEARCH_PATH}"
+  #   params = {
+  #     term: term,
+  #     location: location,
+  #     limit: SEARCH_LIMIT,
+  #     categories: "Food"
+  #   }
+
+    def search(term=DEFAULT_TERM, coordinates={latitude: 40.7007739,
+longitude: -73.9877738})
+      url = "#{API_HOST}#{SEARCH_PATH}"
+      params = {
+        term: term,
+        latitude: coordinates[:latitude],
+        longitude: coordinates[:longitude],
+        # location: location,
+        limit: SEARCH_LIMIT,
+        categories: "Food"
+      }
 
     response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
     # arr = response.parse["businesses"]
