@@ -14,7 +14,11 @@ class SearchesController < ApplicationController
       user = current_log
       @search = Search.create(term: params[:term], user: user)
       if @search
-        results = @search.search(params[:term])
+        # if params[:latitude]
+        #   results = @search.search(params[:term])
+        # else
+          results = @search.search(params[:term], params[:latitude], params[:longitude])
+        # end
         render json: @search.businesses
       else
         render json: { errors: @search.errors.full_messages }
@@ -23,11 +27,5 @@ class SearchesController < ApplicationController
       render json: { errors: "User not logged in" }
     end
   end
-
-  private
-
-  # def search_params
-  #   params.require(:search).permit(:email, :password)
-  # end
 
 end

@@ -28,22 +28,25 @@ class Search < ApplicationRecord
   #     categories: "Food"
   #   }
 
-    def search(term=DEFAULT_TERM, coordinates={latitude: 40.7007739,
-longitude: -73.9877738})
+    def search(term=DEFAULT_TERM, latitude=40.7007739, longitude=73.9877738)
       url = "#{API_HOST}#{SEARCH_PATH}"
       params = {
         term: term,
-        latitude: coordinates[:latitude],
-        longitude: coordinates[:longitude],
+        latitude: latitude,
+        longitude: longitude,
         # location: location,
         limit: SEARCH_LIMIT,
         categories: "Food"
       }
 
+      # binding.pry
+      # "hi"
+
     response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
     # arr = response.parse["businesses"]
     new_response = JSON.parse(response)
     # binding.pry
+    # "hi"
     arr = new_response["businesses"]
     arr.each do |bus|
         do_delivery = bus["transactions"].include?("delivery")
