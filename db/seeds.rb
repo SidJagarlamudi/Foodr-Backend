@@ -18,7 +18,7 @@ sarah = User.create(email: "sarah@gmail.com", password: "1234")
 
 search1 = Search.create(term: "sushi", user: tom)
 
-result = search1.search("sushi")
+result = search1.search("sushi", 40.7007739, -73.9877738)
 
 binding.pry
 "hi"
