@@ -4,7 +4,8 @@ class UserSerializer < ActiveModel::Serializer
   def favorites
     arr =
     self.object.spots.map do |rest|
-      {id: rest.id, name: rest.name, lat: rest.latitude, long: rest.longitude}
+      favorite = Favorite.find_by(spot_id: rest.id)
+      {id: rest.id, favorite_id: favorite.id, name: rest.name, lat: rest.latitude, long: rest.longitude}
     end
   end
 

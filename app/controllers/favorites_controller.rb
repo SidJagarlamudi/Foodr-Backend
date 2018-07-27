@@ -3,10 +3,11 @@ class FavoritesController < ApplicationController
   def index
     render json: Favorite.all
   end
-  #
-  # def show
-  #   render json: @user
-  # end
+
+  def show
+    @favorite = Favorite.find(params[:id])
+    render json: @favorite
+  end
 
   def create
     if logged_in
@@ -15,7 +16,7 @@ class FavoritesController < ApplicationController
       @favorite = Favorite.create(spot: spot, user: user)
       # byebug
       if @favorite
-        render json: user.spots
+        render json: user.favorite_spots
       else
         render json: { errors: @favorite.errors.full_messages }
       end
@@ -24,8 +25,7 @@ class FavoritesController < ApplicationController
     end
   end
 
-  def delete
-    byebug
+  def destroy
     if logged_in
       user = current_log
       @favorite = Favorite.find(params[:id])
