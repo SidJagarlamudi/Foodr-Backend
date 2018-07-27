@@ -25,10 +25,15 @@ class FavoritesController < ApplicationController
   end
 
   def delete
-    @favorite = Favorite.find(params[:id])
-
-    @favorite.destroy
-
+    byebug
+    if logged_in
+      user = current_log
+      @favorite = Favorite.find(params[:id])
+      @favorite.destroy
+      render json: user.spots
+    else
+      render json: { errors: "User not logged in" }
+    end
   end
 
   private

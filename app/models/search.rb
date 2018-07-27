@@ -28,7 +28,7 @@ class Search < ApplicationRecord
   #     categories: "Food"
   #   }
 
-    def search(term=DEFAULT_TERM, latitude=40.7007739, longitude=73.9877738)
+    def search(term=DEFAULT_TERM, latitude=40.7007739, longitude=-73.9877738)
       url = "#{API_HOST}#{SEARCH_PATH}"
       params = {
         term: term,
@@ -36,7 +36,8 @@ class Search < ApplicationRecord
         longitude: longitude,
         # location: location,
         limit: SEARCH_LIMIT,
-        categories: "Food"
+        categories: "Food",
+        radius: 1609
       }
 
       # binding.pry
