@@ -16,14 +16,14 @@ Favorite.destroy_all
 tom = User.create(email: "tom@gmail.com", password: "1234")
 sarah = User.create(email: "sarah@gmail.com", password: "1234")
 
-search1 = Search.create(term: "sushi", user: tom)
+# search1 = Search.create(term: "sushi", user: tom)
 
-result = search1.search("sushi", 40.7007739, -73.9877738)
+# result = search1.search("sushi", 40.7007739, -73.9877738)
 
-binding.pry
-"hi"
+# binding.pry
+# "hi"
 
-Favorite.create(user: tom, spot: Business.find(1))
+# Favorite.create(user: tom, spot: Business.find(1))
 
 
 # require "json"
