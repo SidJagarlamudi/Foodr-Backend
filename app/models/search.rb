@@ -101,6 +101,7 @@ class Search < ApplicationRecord
       business.longitude = longitude
       business.search = search
       end
+      @business.is_closed = is_closed
       @business.search = search
       @business.save
   end
