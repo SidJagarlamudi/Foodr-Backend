@@ -86,6 +86,7 @@ class Search < ApplicationRecord
     latitude = bus["coordinates"]["latitude"]
     longitude = bus["coordinates"]["longitude"]
     categories = bus["categories"][0]["title"]
+    distance = (bus["distance"] * 0.00062137119223733).round(2)
     # .map do |obj|
     #   obj.map do |key, value|
     #     return value if key == "title"
@@ -108,9 +109,11 @@ class Search < ApplicationRecord
         business.longitude = longitude
         business.search = search
         business.categories = categories
+        business.distance = distance
         end
         @business.is_closed = is_closed
         @business.search = search
+        @business.distance = distance
         @business.save
     end
 
