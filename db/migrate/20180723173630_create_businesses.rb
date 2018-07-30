@@ -12,6 +12,7 @@ class CreateBusinesses < ActiveRecord::Migration[5.2]
       t.string :price
       t.string :address
       t.string :phone
+      t.string :categories
       t.float :latitude
       t.float :longitude
       t.integer :search_id

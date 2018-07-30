@@ -85,26 +85,36 @@ class Search < ApplicationRecord
     address = bus["location"]["display_address"].join(", ")
     latitude = bus["coordinates"]["latitude"]
     longitude = bus["coordinates"]["longitude"]
-    @business = Business.where(business_id: bus["id"]).first_or_create do |business|
+    categories = bus["categories"][0]["title"]
+    # .map do |obj|
+    #   obj.map do |key, value|
+    #     return value if key == "title"
+    #   end
+    # end.join(", ")
 
-      business.name = name
-      business.image_url = image_url
-      business.is_closed = is_closed
-      business.url = url
-      business.reviews = reviews
-      business.rating = rating
-      business.do_delivery = do_delivery
-      business.price = price
-      business.address = address
-      business.phone = phone
-      business.latitude = latitude
-      business.longitude = longitude
-      business.search = search
-      end
-      @business.is_closed = is_closed
-      @business.search = search
-      @business.save
-  end
+      @business = Business.where(business_id: bus["id"]).first_or_create do |business|
+
+        business.name = name
+        business.image_url = image_url
+        business.is_closed = is_closed
+        business.url = url
+        business.reviews = reviews
+        business.rating = rating
+        business.do_delivery = do_delivery
+        business.price = price
+        business.address = address
+        business.phone = phone
+        business.latitude = latitude
+        business.longitude = longitude
+        business.search = search
+        business.categories = categories
+        end
+        @business.is_closed = is_closed
+        @business.search = search
+        @business.save
+    end
+
+
   end
 
 
