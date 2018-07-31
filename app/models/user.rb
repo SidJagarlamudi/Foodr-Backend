@@ -9,7 +9,7 @@ class User < ApplicationRecord
   def favorite_spots
     self.spots.map do |rest|
       favorite = Favorite.find_by(spot_id: rest.id)
-      { id: rest.id, name: rest.name, favorite_id: favorite.id, latitude: rest.latitude, longitude: rest.longitude }
+      { id: rest.id, name: rest.name, favorite_id: favorite.id, latitude: rest.latitude, longitude: rest.longitude, url: rest.url }
     end
   end
 
