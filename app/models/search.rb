@@ -71,6 +71,8 @@ class Search < ApplicationRecord
   # "hi"
   arr = new_response["businesses"]
   arr.each do |bus|
+    distance = (bus["distance"] * 0.00062137119223733).round(2)
+    next if distance > 10
     search = self
     name = bus["name"]
     image_url = bus["image_url"]
