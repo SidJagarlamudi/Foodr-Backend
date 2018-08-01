@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.create(email: params[:email], password: params[:password])
     if @user
-      render json: @user
+      render json: { msg: "Please Login" }, status: 200
     else
-      render json: { errors: @user.errors.full_messages }
+      render json: { error: "Incorrect email or password" }, status: 401
     end
   end
 
@@ -31,13 +31,13 @@ class UsersController < ApplicationController
 
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :password)
-  end
-
-  def set_user
-    @user = User.find(params[:id])
-  end
+  # private
+  #
+  # def user_params
+  #   params.require(:user).permit(:email, :password)
+  # end
+  #
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
 end
