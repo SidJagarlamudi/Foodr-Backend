@@ -1,24 +1,5 @@
-# README
+Welcome to Foodr!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the back end of the Foodr application. The front end can be found here: https://github.com/teasacura/Foodr-Frontend
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run this application, you will need to have access to API keys for Yelp Fusion API and Google Maps API.
